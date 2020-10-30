@@ -1,0 +1,56 @@
+﻿@page
+@model Hair_Dressing_Appointments_Core_Web_App.Pages.Appointments.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Appointment Details</h1>
+
+<p>
+    <a class="btn btn-outline-info" asp-page="Create">+Add</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Appointment[0].Client)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Appointment[0].HairDresser)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Appointment[0].HairDressingOption)
+            </th>
+
+            <th>
+               Charge 
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Appointment) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Client.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HairDresser.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HairDressingOption.OptionName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.HairDressingOption.Charge)
+            </td>
+            <td>
+                <a class="btn btn-outline-info" asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a class="btn btn-outline-info" asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a class="btn btn-outline-info" asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

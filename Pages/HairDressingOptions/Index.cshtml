@@ -1,0 +1,42 @@
+﻿@page
+@model Hair_Dressing_Appointments_Core_Web_App.Pages.HairDressingOptions.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Hair Dressing Services</h1>
+
+<p>
+    <a class="btn btn-outline-info" asp-page="Create">+ Add</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.HairDressingOption[0].OptionName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HairDressingOption[0].Charge)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.HairDressingOption) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OptionName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Charge)
+            </td>
+            <td>
+                <a class="btn btn-outline-info" asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a class="btn btn-outline-info" asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a class="btn btn-outline-info" asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
